@@ -1,0 +1,62 @@
+<div class="emoji-banner-container" appearance="outlined">
+  <h1 matTypography="headline-4" class="title">Para o amor da minha vida 💖</h1>
+
+  <!-- 🎵 PLAYER DE MÚSICA -->
+  <div class="music-player">
+    <button mat-raised-button color="primary" (click)="togglePlay()">
+      <mat-icon>{{ isPlaying ? "pause" : "play_arrow" }}</mat-icon>
+      {{ isPlaying ? "Pausar Música" : "Tocar Música" }}
+    </button>
+    <audio #audio controls [hidden]="true">
+      <source src="assets/musicas/Contramao.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- 📸 CARROSSEL DE IMAGENS -->
+  <p-carousel
+    [value]="images"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="3500"
+    [showIndicators]="true"
+    [showNavigators]="false"
+    styleClass="custom-carousel"
+  >
+    <ng-template pTemplate="item" let-image>
+      <div class="carousel-image-wrapper">
+        <img [src]="image.url" class="carousel-image" />
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  <!-- 📝 TEXTOS -->
+  <div class="text-content" appearance="outlined">
+    <div class="love-message">
+      <h2>💘 Estamos juntos há:</h2>
+      <p>{{ years }} ano(s), {{ months }} mês(es), {{ days }} dia(s)</p>
+      <p>{{ hours }} horas de amor incondicional 💞</p>
+      <p> e há exatamente 1 ano que eu te pedi em namoro!</p>
+
+      <blockquote>
+        "Você é o meu hoje e todos os meus amanhãs."
+        <br />— 💕 Feliz Dia dos Namorados, meu amor!
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- 😍 CHUVA DE EMOJIS -->
+  <div class="emoji-rain">
+    <div
+      *ngFor="let emoji of emojis"
+      class="emoji"
+      [ngStyle]="{
+        left: emoji.left,
+        animationDuration: emoji.duration,
+        animationDelay: emoji.delay
+      }"
+    >
+      ❤️
+    </div>
+  </div>
+</div>
